@@ -11,7 +11,7 @@
       var station;
 
       station = data.ResponseData[0]
-      showNextDeparture(station.SiteId)
+      showNextDeparture(station.SiteId, station.Name)
       
     })
         .catch(error => {
@@ -31,7 +31,7 @@
 }
 
 
-function showNextDeparture(siteId){
+function showNextDeparture(siteId, Name){
 
 
   const url= `https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/realtimedeparturesV4.json?key=d7238df8a72d44b495b41dbebc9740cd&siteid=${siteId}&timewindow=5`;
@@ -40,18 +40,27 @@ function showNextDeparture(siteId){
   .then(function(data){
     console.log("WORKING")
     console.log(data.ResponseData)
-  
+ var empty =  document.getElementById("test")
+    empty.innerHTML = "";
+    var header =document.getElementById("currentStation")
+    header.innerHTML = "";
+  header.innerHTML = Name;
     for (let index = 0; index < data.ResponseData.Metros.length; index++) {
       
-      var div = document.createElement("div");
-      div.style.backgroundColor="black";
-      var text = document.createElement("p");
-      text.style.color="yellow";
-      text.innerHTML = `${data.ResponseData.Metros[index].LineNumber} ${data.ResponseData.Metros[index].Destination} ${data.ResponseData.Metros[index].DisplayTime}`
-      div.appendChild(text);
-      document.getElementById("info").appendChild(div);
+     var tr = document.createElement("tr"); 
+      var LineNumber = document.createElement("td"); 
+      var Destination = document.createElement("td"); 
+      var DisplayTime = document.createElement("td"); 
+      LineNumber.innerHTML = `${data.ResponseData.Metros[index].LineNumber}`
+      Destination.innerHTML = ` ${data.ResponseData.Metros[index].Destination} `
+      DisplayTime.innerHTML = `${data.ResponseData.Metros[index].DisplayTime}`
+      tr.appendChild(LineNumber);
+      tr.appendChild(Destination);
+      tr.appendChild(DisplayTime);
+      document.getElementById("test").appendChild(tr);
+
     }
-    
+    // ${data.ResponseData.Metros[index].Destination} ${data.ResponseData.Metros[index].DisplayTime}
   })
       .catch(error => {
           if (typeof error.json === "function") {

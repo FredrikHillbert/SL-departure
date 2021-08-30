@@ -22,7 +22,8 @@ body{
   background: var(--bgFormEls);
   }
 .large{
-  margin: 5%;
+width: 100%;
+
   
 }
 
@@ -54,6 +55,35 @@ cursor: pointer;
     transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
 
 }
+table,th, td {
+  color:rgb(184, 184, 46);
+  background: rgb(54, 54, 54);
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
 @media (min-width: 550px)
 {
   .grid-container{display: grid;grid-template-columns: 1fr 1fr1fr;
@@ -61,7 +91,8 @@ cursor: pointer;
       }
   .large{grid-column: 2 / span 2; 
       grid-row: 1 / span 4;}
-  
 
+    
+  
 }
 
