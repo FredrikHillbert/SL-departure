@@ -1,10 +1,15 @@
  function getBusStops(searchWord){
     let arrayOfBusStops = [];
-    const url= 'https://api.sl.se/api2/typeahead.json?key=bb74271e00114024a5b0442b5c6cbaa0&searchstring=slu&stationsonly=True&maxresults=10';
+    const url= 'https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/typeahead.json?key=bb74271e00114024a5b0442b5c6cbaa0&searchstring=slu&stationsonly=True&maxresults=10';
     fetch(url)
     .then((resp)=>resp.json())
     .then(function(data){
+      console.log("WORKING")
+
+      console.log(data)
+
         }
+     
         )
         .catch(error => {
             if (typeof error.json === "function") {
@@ -26,8 +31,6 @@
 function showNextDeparture(){
 
 }
-
-
 
 
 function autoComplete(inp, value){
