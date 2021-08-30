@@ -3,8 +3,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/all.min.css">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Min hållplats</title>
 </head>
 <body>
@@ -13,17 +14,34 @@
               <p>Från: <span id="From">vilken hållplats åker du ifrån?</span></p>
               <input id="myInput" type="text" placeholder="Från.." name="search">
               <button onclick="getBusStops();"><i class="fa fa-search"></i></button>
-          </div>
-          
     
-
-        <table class="large" id="info">
+              <div id="radios">
+                <label for="Tunnelbana" >
+                  <input type="radio" name="mode" id="subway" value="Tunnelbana" checked/>
+                  <span><i class="fas fa-subway"></i></span>
+                </label>                
+                <label for="Pendeltåg" >
+                  <input type="radio" name="mode" id="train" value="Pendeltåg" />
+                  <span><i class="fas fa-train"></i></span>
+                </label>
+                <label for="Buss" >
+                  <input type="radio" name="mode" id="bus" value="Buss" />
+                  <span><i class="fas fa-bus"></i></span>
+                </label>
+              </div>
+            </div>
+            
+            
+            
+            <table class="large" id="info">
+                
+                <th colspan="3" id="currentStation" style="  background-color: rgba(44, 44, 110, 0.842); color: white;">Rådmansgatan</th>
+                <tbody id="test">
+                    
+                </tbody>
            
-            <th colspan="3" id="currentStation" style="  background-color: rgba(44, 44, 110, 0.842); color: white;">Rådmansgatan</th>
-          <tbody id="test">
-
-          </tbody>
           </table>
+        </div>
 
 </body>
 <script src="/app.js"></script>
