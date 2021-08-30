@@ -10,19 +10,13 @@
 <body>
     <div class="grid-container">
         <div class="search-container">
-            <form action="/action_page.php">
+            <form >
               <p>Från: <span id="From">Det valda elementet</span></p>
-              <input type="text" placeholder="Från.." name="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <input id="myInput" type="text" placeholder="Från.." name="search">
+              <button onclick="getInputValue();" type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
-          <div class="search-container">
-              <form action="/action_page.php">
-                <p>Till <span id="To">Det valda elementet</span></p>
-                <input type="text" placeholder="Till.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
+          
         <div> Content</div>
         <div> Content </div>
         <div class="large"> Content TblView </div>

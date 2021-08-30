@@ -1,4 +1,8 @@
- function getBusStops(searchWord){
+ function getInputValue(){
+  var inputVal = document.getElementById("myInput").value;
+    
+  // Displaying the value
+  alert(inputVal);
     let arrayOfBusStops = [];
     const url= 'https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/typeahead.json?key=bb74271e00114024a5b0442b5c6cbaa0&searchstring=slu&stationsonly=True&maxresults=10';
     fetch(url)
