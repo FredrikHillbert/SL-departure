@@ -10,16 +10,13 @@
 <body>
     <div class="grid-container">
         <div class="search-container">
-            <form >
-              <p>Från: <span id="From">Det valda elementet</span></p>
+              <p>Från: <span id="From">vilken hållplats åker du ifrån?</span></p>
               <input id="myInput" type="text" placeholder="Från.." name="search">
-              <button onclick="getInputValue();" type="submit"><i class="fa fa-search"></i></button>
-            </form>
+              <button onclick="getBusStops();"><i class="fa fa-search"></i></button>
           </div>
           
-        <div> Content</div>
-        <div> Content </div>
-        <div class="large"> Content TblView </div>
+    
+        <div class="large" id="info"> Avgångar </div>
         </div>
 </body>
 <script src="/app.js"></script>

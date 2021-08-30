@@ -1,20 +1,19 @@
- function getInputValue(){
+ function getBusStops(){
   var inputVal = document.getElementById("myInput").value;
     
   // Displaying the value
-  alert(inputVal);
-    let arrayOfBusStops = [];
-    const url= 'https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/typeahead.json?key=bb74271e00114024a5b0442b5c6cbaa0&searchstring=slu&stationsonly=True&maxresults=10';
+    const url= `https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/typeahead.json?key=bb74271e00114024a5b0442b5c6cbaa0&searchstring=${inputVal}&stationsonly=True&maxresults=10`;
     fetch(url)
     .then((resp)=>resp.json())
     .then(function(data){
       console.log("WORKING")
+      // console.log(data.ResponseData)
+      var station;
 
-      console.log(data)
-
-        }
-     
-        )
+      station = data.ResponseData[0]
+      showNextDeparture(station.SiteId)
+      
+    })
         .catch(error => {
             if (typeof error.json === "function") {
                 error.json().then(jsonError => {
@@ -32,7 +31,43 @@
 }
 
 
-function showNextDeparture(){
+function showNextDeparture(siteId){
+
+
+  const url= `https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/realtimedeparturesV4.json?key=d7238df8a72d44b495b41dbebc9740cd&siteid=${siteId}&timewindow=5`;
+  fetch(url)
+  .then((resp)=>resp.json())
+  .then(function(data){
+    console.log("WORKING")
+    console.log(data.ResponseData)
+  
+    for (let index = 0; index < data.ResponseData.Metros.length; index++) {
+      
+      var div = document.createElement("div");
+      div.style.backgroundColor="black";
+      var text = document.createElement("p");
+      text.style.color="yellow";
+      text.innerHTML = `${data.ResponseData.Metros[index].LineNumber} ${data.ResponseData.Metros[index].Destination} ${data.ResponseData.Metros[index].DisplayTime}`
+      div.appendChild(text);
+      document.getElementById("info").appendChild(div);
+    }
+    
+  })
+      .catch(error => {
+          if (typeof error.json === "function") {
+              error.json().then(jsonError => {
+                  console.log("Json error from API");
+                  console.log(jsonError);
+              }).catch(genericError => {
+                  console.log("Generic error from API");
+                  console.log(error.statusText);
+              });
+          } else {
+              console.log("Fetch error");
+              console.log(error);
+          }
+      })
+
 
 }
 
