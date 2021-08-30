@@ -1,29 +1,32 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>SL Departure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Min hållplats</title>
 </head>
 <body>
-    <h1>SL avgångar</h1>
-    <form autocomplete="off" action="/action_page.php">
-        <h2>Vart vill du resa?</h2>
-        <div class ="autocomplete" style="width:300px">
-            <input id="myInput" type="text" placeholder="Från" oninput="getBusStops(this.value)">
-            <br>
-            <br>
-            <input type="text" placeholder="Till">
+    <div class="grid-container">
+        <div class="search-container">
+            <form action="/action_page.php">
+              <p>Från: <span id="From">Det valda elementet</span></p>
+              <input type="text" placeholder="Från.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+          <div class="search-container">
+              <form action="/action_page.php">
+                <p>Till <span id="To">Det valda elementet</span></p>
+                <input type="text" placeholder="Till.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
         </div>
-       
-       
-      
-
-    </form>
-    <script src="app.js">
-    </script>
+        <div> Content</div>
+        <div> Content </div>
+        <div class="large"> Content TblView </div>
+        </div>
 </body>
-
+<script src="/app.js"></script>
 </html>
