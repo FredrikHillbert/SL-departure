@@ -1,13 +1,12 @@
  function getBusStops(){
   var inputVal = document.getElementById("myInput").value;
     
-  // Displaying the value
     const url= `https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/typeahead.json?key=bb74271e00114024a5b0442b5c6cbaa0&searchstring=${inputVal}&stationsonly=True&maxresults=10`;
     fetch(url)
     .then((resp)=>resp.json())
     .then(function(data){
       console.log("WORKING")
-      // console.log(data.ResponseData)
+      
       var station;
 
       station = data.ResponseData[0]
@@ -84,8 +83,8 @@ function showNextDeparture(siteId, Name){
       tr.appendChild(Destination);
       tr.appendChild(DisplayTime);
       document.getElementById("test").appendChild(tr);
-
     }
+    update();
     // ${data.ResponseData.Metros[index].Destination} ${data.ResponseData.Metros[index].DisplayTime}
   })
       .catch(error => {
@@ -102,9 +101,21 @@ function showNextDeparture(siteId, Name){
               console.log(error);
           }
       })
+}
+function update(){
+  setTimeout(function(){
+    alert("Sup!"); 
+}, 2000);
 
+update();
 
 }
+
+
+
+
+
+
 
 
 function autoComplete(inp, value){
