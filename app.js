@@ -87,7 +87,7 @@ function showNextDeparture(siteId, Name){
       tr.appendChild(DisplayTime);
       document.getElementById("test").appendChild(tr);
     }
-    update();
+   
     // ${data.ResponseData.Metros[index].Destination} ${data.ResponseData.Metros[index].DisplayTime}
   })
       .catch(error => {
@@ -105,14 +105,8 @@ function showNextDeparture(siteId, Name){
           }
       })
 }
-function update(){
-  setTimeout(function(){
-    getBusStops()
-}, 60000);
 
-
-
-}
+setInterval(getBusStops,60000);
 
 
 
