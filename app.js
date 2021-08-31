@@ -40,20 +40,46 @@ function showNextDeparture(siteId, Name){
   .then(function(data){
     console.log("WORKING")
     console.log(data.ResponseData)
- var empty =  document.getElementById("test")
+    var empty =  document.getElementById("test")
     empty.innerHTML = "";
     var header =document.getElementById("currentStation")
     header.innerHTML = "";
-  header.innerHTML = Name;
-    for (let index = 0; index < data.ResponseData.Metros.length; index++) {
+     header.innerHTML = Name;
+     var currentTransport;
+     if(document.getElementById('subway').checked)
+     {
+      currentTransport = data.ResponseData.Metros.length;
+    }
+     else if(document.getElementById('train').checked)
+     {
+      currentTransport = data.ResponseData.Trains.length;
+    }
+     else if(document.getElementById('bus').checked)
+     {
+       currentTransport = data.ResponseData.Buses.length;
+     }
+    for (let index = 0; index < currentTransport; index++) {
       
-     var tr = document.createElement("tr"); 
+      var tr = document.createElement("tr"); 
       var LineNumber = document.createElement("td"); 
       var Destination = document.createElement("td"); 
       var DisplayTime = document.createElement("td"); 
-      LineNumber.innerHTML = `${data.ResponseData.Metros[index].LineNumber}`
-      Destination.innerHTML = ` ${data.ResponseData.Metros[index].Destination} `
-      DisplayTime.innerHTML = `${data.ResponseData.Metros[index].DisplayTime}`
+      if(document.getElementById('subway').checked) {
+        LineNumber.innerHTML = `${data.ResponseData.Metros[index].LineNumber}`
+        Destination.innerHTML = ` ${data.ResponseData.Metros[index].Destination} `
+        DisplayTime.innerHTML = `${data.ResponseData.Metros[index].DisplayTime}`
+      }
+      else if(document.getElementById('train').checked) {
+        LineNumber.innerHTML = `${data.ResponseData.Trains[index].LineNumber}`
+        Destination.innerHTML = ` ${data.ResponseData.Trains[index].Destination} `
+        DisplayTime.innerHTML = `${data.ResponseData.Trains[index].DisplayTime}`
+      }
+      else if (document.getElementById('bus').checked) {
+        LineNumber.innerHTML = `${data.ResponseData.Buses[index].LineNumber}`
+        Destination.innerHTML = ` ${data.ResponseData.Buses[index].Destination} `
+        DisplayTime.innerHTML = `${data.ResponseData.Buses[index].DisplayTime}`
+      }
+     
       tr.appendChild(LineNumber);
       tr.appendChild(Destination);
       tr.appendChild(DisplayTime);
