@@ -14,7 +14,8 @@
               <p>Från: <span id="From">vilken hållplats åker du ifrån?</span></p>
               <input id="myInput" type="text" placeholder="Från.." name="search">
               <button onclick="getBusStops();"><i class="fa fa-search"></i></button>
-    
+              <p style="margin-top:3%;" for="distance">Gångavstånd till hållplats (km)</p>
+              <input type="number" id="distance" name="distance" min="0" max="100">
               <div id="radios">
                 <label for="Tunnelbana" >
                   <input type="radio" name="mode" id="subway" value="Tunnelbana" checked/>
