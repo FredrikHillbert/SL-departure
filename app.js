@@ -1,7 +1,9 @@
  function getBusStops(){
   var inputVal = document.getElementById("myInput").value;
     
-    const url= `https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/typeahead.json?key=bb74271e00114024a5b0442b5c6cbaa0&searchstring=${inputVal}&stationsonly=True&maxresults=10`;
+    // const url= `https://cors.bridged.cc/https://api.sl.se/api2/realtimedeparturesV4.json?key=d7238df8a72d44b495b41dbebc9740cd&siteid=$%7BsiteId%7D&timewindow=5%60`;
+    
+    const url= `https://cors.bridged.cc/https://api.sl.se/api2/typeahead.json?key=f9fb2330e98546d98c027831b97937e4&searchstring=${inputVal}&stationsonly=True&maxresults=10`;
     fetch(url)
     .then((resp)=>resp.json())
     .then(function(data){
@@ -33,7 +35,8 @@
 function showNextDeparture(siteId, Name){
 
 
-  const url= `https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/realtimedeparturesV4.json?key=d7238df8a72d44b495b41dbebc9740cd&siteid=${siteId}&timewindow=5`;
+  // const url= `https://cors-anywhere.herokuapp.com/https://api.sl.se/api2/realtimedeparturesV4.json?key=d7238df8a72d44b495b41dbebc9740cd&siteid=${siteId}&timewindow=5`;
+  const url= `https://cors.bridged.cc/https://api.sl.se/api2/realtimedeparturesV4.json?key=b358acfbac7444f5b4160a89e4e44182&siteid=${siteId}&timewindow=5`;
   fetch(url)
   .then((resp)=>resp.json())
   .then(function(data){
@@ -104,10 +107,10 @@ function showNextDeparture(siteId, Name){
 }
 function update(){
   setTimeout(function(){
-    alert("Sup!"); 
-}, 2000);
+    getBusStops()
+}, 60000);
 
-update();
+
 
 }
 
