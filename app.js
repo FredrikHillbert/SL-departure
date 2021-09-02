@@ -109,9 +109,33 @@ function showNextDeparture(siteId, Name){
 setInterval(getBusStops,60000);
 
 
+function whenToLeave(){
 
+  const timeH = document.getElementById("time");
+  var inputDistance = document.getElementById("distance").value;
 
+  let timeSecond = 0;
 
+  timeSecond = inputDistance / 1.667
+
+if(timeSecond != 0){
+  displayTime(timeSecond)
+  const countDown = setInterval(() => {
+    timeSecond --;
+    displayTime(timeSecond)
+    if(timeSecond<=0 || timeSecond <1){
+      clearInterval(countDown);
+    }
+  }, 1000)
+  function displayTime(second){
+  
+    const min = Math.floor(second / 60); //tar fram min utan decimaler
+    const sec = Math.floor(second % 60); // tar fram sec utan dec
+    timeH.innerHTML = `${min<10 ? '0': ''}${min}:${sec<10?'0':''}${sec}`
+  }
+}
+
+}
 
 
 
