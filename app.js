@@ -68,7 +68,7 @@ function showNextDeparture(siteId, Name){
     
       let timeSecond = 0;
     
-      timeSecond = inputDistance / 1.667
+      timeSecond = inputDistance / 1.2
 
       if(document.getElementById('subway').checked) {
         LineNumber.innerHTML = `${data.ResponseData.Metros[index].LineNumber}`;
@@ -160,7 +160,7 @@ function whenToLeave(){
   
   let timeSecond = 0;
   
-  timeSecond = inputDistance / 1.667
+  timeSecond = inputDistance / 1.2
   const min = Math.floor(timeSecond / 60); 
     const sec = Math.floor(timeSecond % 60); 
   var timeToGo = document.createElement("p");
