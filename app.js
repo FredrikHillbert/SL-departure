@@ -132,13 +132,9 @@ if(timeSecond != 0){
     const min = Math.floor(second / 60); //tar fram min utan decimaler
     const sec = Math.floor(second % 60); // tar fram sec utan dec
     timeH.innerHTML = `${min<10 ? '0': ''}${min}:${sec<10?'0':''}${sec}`
+    }
   }
 }
-
-}
-
-
-
 function autoComplete(inp, value){
     /*the autocomplete function takes two arguments,
  the text field element and an array of possible autocompleted values:*/
