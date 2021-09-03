@@ -76,7 +76,14 @@ function showNextDeparture(siteId, Name){
         DisplayTime.innerHTML = `${data.ResponseData.Metros[index].DisplayTime}`;
         
        var getnumber =  data.ResponseData.Metros[index].DisplayTime.replace(/[^0-9]/g, "");
-        if(getnumber <= (timeSecond/60))
+      if(inputDistance == 0){
+         
+      }
+       else if(getnumber > 60){
+        Time.innerHTML = "Kontrollera avgångstid"
+       }
+     
+        else if(getnumber <= (timeSecond/60))
         {
          Time.innerHTML = "Du hinner inte";
         }
@@ -89,7 +96,10 @@ function showNextDeparture(siteId, Name){
         Destination.innerHTML = ` ${data.ResponseData.Trains[index].Destination} `;
         DisplayTime.innerHTML = `${data.ResponseData.Trains[index].DisplayTime}`;
         var getnumber =  data.ResponseData.Trains[index].DisplayTime.replace(/[^0-9]/g, "");
-        if(getnumber <= (timeSecond/60))
+        if(getnumber > 60){
+          Time.innerHTML = "Kontrollera avgångstid"
+         }
+        else if(getnumber <= (timeSecond/60))
         {
          Time.innerHTML = "Du hinner inte";
         }
@@ -102,7 +112,10 @@ function showNextDeparture(siteId, Name){
         Destination.innerHTML = ` ${data.ResponseData.Buses[index].Destination} `;
         DisplayTime.innerHTML = `${data.ResponseData.Buses[index].DisplayTime}`;
         var getnumber =  data.ResponseData.Buses[index].DisplayTime.replace(/[^0-9]/g, "");
-        if(getnumber <= (timeSecond/60))
+        if(getnumber > 60){
+          Time.innerHTML = "Kontrollera avgångstid"
+         }
+        else if(getnumber <= (timeSecond/60))
         {
          Time.innerHTML = "Du hinner inte";
         }
@@ -153,7 +166,7 @@ function whenToLeave(){
   var timeToGo = document.createElement("p");
   timeSecond = `${min<10 ? '0': ''}${min}:${sec<10?'0':''}${sec}`;
   
-  timeToGo.innerHTML= `Det tar dig ${timeSecond} min att gå till hållplatssen`;
+  timeToGo.innerHTML= `Det tar dig ${timeSecond} min att gå till hållplatsen`;
 
   document.getElementById("time").appendChild(timeToGo);
 
