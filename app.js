@@ -10,7 +10,7 @@
       var station;
 
       station = data.ResponseData[0]
-      showNextDeparture(station.SiteId, station.Name)
+       showNextDeparture(station.SiteId, station.Name)
       
     })
         .catch(error => {
@@ -76,18 +76,16 @@ function showNextDeparture(siteId, Name){
         DisplayTime.innerHTML = `${data.ResponseData.Metros[index].DisplayTime}`;
         
        var getnumber =  data.ResponseData.Metros[index].DisplayTime.replace(/[^0-9]/g, "");
-      if(inputDistance == 0){
-         
-      }
-       else if(getnumber > 60){
+     
+       if(getnumber > 60  && inputDistance != 0){
         Time.innerHTML = "Kontrollera avgångstid"
        }
      
-        else if(getnumber <= (timeSecond/60))
+        else if(getnumber <= (timeSecond/60) && inputDistance != 0)
         {
          Time.innerHTML = "Du hinner inte";
         }
-        else{
+        else if(getnumber > (timeSecond/60) && inputDistance != 0){
           Time.innerHTML = "Du hinner";
         }
       }
@@ -96,14 +94,14 @@ function showNextDeparture(siteId, Name){
         Destination.innerHTML = ` ${data.ResponseData.Trains[index].Destination} `;
         DisplayTime.innerHTML = `${data.ResponseData.Trains[index].DisplayTime}`;
         var getnumber =  data.ResponseData.Trains[index].DisplayTime.replace(/[^0-9]/g, "");
-        if(getnumber > 60){
+        if(getnumber > 60 && inputDistance != 0){
           Time.innerHTML = "Kontrollera avgångstid"
          }
-        else if(getnumber <= (timeSecond/60))
+        else if(getnumber <= (timeSecond/60) && inputDistance != 0)
         {
          Time.innerHTML = "Du hinner inte";
         }
-        else{
+        else if(getnumber > (timeSecond/60) && inputDistance != 0){
           Time.innerHTML = "Du hinner";
         }
       }
@@ -112,14 +110,14 @@ function showNextDeparture(siteId, Name){
         Destination.innerHTML = ` ${data.ResponseData.Buses[index].Destination} `;
         DisplayTime.innerHTML = `${data.ResponseData.Buses[index].DisplayTime}`;
         var getnumber =  data.ResponseData.Buses[index].DisplayTime.replace(/[^0-9]/g, "");
-        if(getnumber > 60){
+        if(getnumber > 60 && inputDistance != 0){
           Time.innerHTML = "Kontrollera avgångstid"
          }
-        else if(getnumber <= (timeSecond/60))
+        else if(getnumber <= (timeSecond/60)&& inputDistance != 0)
         {
          Time.innerHTML = "Du hinner inte";
         }
-        else{
+        else if (getnumber > (timeSecond/60) && inputDistance != 0){
           Time.innerHTML = "Du hinner";
         }
       }
@@ -157,19 +155,22 @@ function whenToLeave(){
   empty.innerHTML = "";
   
   var inputDistance = document.getElementById("distance").value;
+  if(inputDistance != 0)
+  {
+    let timeSecond = 0;
   
-  let timeSecond = 0;
+    timeSecond = inputDistance / 1.2
+    const min = Math.floor(timeSecond / 60); 
+      const sec = Math.floor(timeSecond % 60); 
+    var timeToGo = document.createElement("p");
+    timeSecond = `${min<10 ? '0': ''}${min}:${sec<10?'0':''}${sec}`;
+    
+    timeToGo.innerHTML= `Det tar dig ${timeSecond} min att gå till hållplatsen`;
   
-  timeSecond = inputDistance / 1.2
-  const min = Math.floor(timeSecond / 60); 
-    const sec = Math.floor(timeSecond % 60); 
-  var timeToGo = document.createElement("p");
-  timeSecond = `${min<10 ? '0': ''}${min}:${sec<10?'0':''}${sec}`;
+    document.getElementById("time").appendChild(timeToGo);
   
-  timeToGo.innerHTML= `Det tar dig ${timeSecond} min att gå till hållplatsen`;
-
-  document.getElementById("time").appendChild(timeToGo);
-
+  }
+ 
 
 };
 
